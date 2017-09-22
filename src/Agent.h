@@ -39,6 +39,7 @@ public:
 	Vector2D getPosition();
 	Vector2D getTarget();
 	Vector2D getVelocity();
+	float getMass();
 	float getMaxVelocity();
 	void setPosition(Vector2D position);
 	void setTarget(Vector2D target);

@@ -39,7 +39,14 @@ Vector2D SteeringBehavior::KinematicFlee(Agent *agent, Agent *target, float dtim
 
 Vector2D SteeringBehavior::Seek(Agent *agent, Vector2D target, float dtime)
 {
-	return Vector2D(0, 0);
+	
+	Vector2D desiredVelocity = target - agent->getPosition();
+	desiredVelocity.Normalize();
+	desiredVelocity *= agent->max_velocity;
+	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+	steeringForce /= agent->max_velocity;
+	steeringForce *= agent->max_force;
+	return steeringForce;
 }
 
 Vector2D SteeringBehavior::Seek(Agent *agent, Agent *target, float dtime)
@@ -49,10 +56,43 @@ Vector2D SteeringBehavior::Seek(Agent *agent, Agent *target, float dtime)
 
 Vector2D SteeringBehavior::Flee(Agent *agent, Vector2D target, float dtime)
 {
-	return Vector2D(0,0);
+	Vector2D desiredVelocity = agent->getPosition()- target;
+	desiredVelocity.Normalize();
+	desiredVelocity *= agent->max_velocity;
+	Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+	steeringForce /= agent->max_velocity;
+	steeringForce *= agent->max_force;
+	return steeringForce;
 }
 
 Vector2D SteeringBehavior::Flee(Agent *agent, Agent *target, float dtime)
 {
 	return Flee(agent, target->position, dtime);
+}
+
+Vector2D SteeringBehavior::Arrive(Agent *agent, Vector2D target, float dtime)
+{
+	if (target.Distance(agent->getPosition(), target) > 300.f) {
+		Vector2D desiredVelocity = target - agent->getPosition();
+		desiredVelocity.Normalize();
+		desiredVelocity *= agent->max_velocity;
+		Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+		steeringForce /= agent->max_velocity;
+		steeringForce *= agent->max_force;
+		return steeringForce;
+	}
+	else {
+		Vector2D desiredVelocity = target - agent->getPosition();
+		desiredVelocity.Normalize();
+		desiredVelocity *= agent->max_velocity*(target.Distance(agent->getPosition(), target) / 300.f);
+		Vector2D steeringForce = desiredVelocity - agent->getVelocity();
+		steeringForce /= agent->max_velocity;
+		steeringForce *= agent->max_force;
+		return steeringForce;
+	}
+}
+
+Vector2D SteeringBehavior::Arrive(Agent *agent, Agent *target, float dtime)
+{
+	return Arrive(agent, target->position, dtime);
 }

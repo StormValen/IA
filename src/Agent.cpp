@@ -72,6 +72,12 @@ void Agent::setMass(float _mass)
 	mass = _mass;
 }
 
+float Agent::getMass() {
+	return mass;
+}
+
+
+
 void Agent::setColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	color = { r, g, b, a };
@@ -113,7 +119,7 @@ void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event)
 
 void Agent::draw()
 {
-	if (draw_sprite)
+	if (draw_sprite == false) //aqui va true 
 	{
 		Uint32 sprite;
 		

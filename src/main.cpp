@@ -5,6 +5,9 @@
 #include "SDL_SimpleApp.h"
 #include "SceneKinematicSeek.h"
 #include "SceneKinematicFlee.h"
+#include "Scene_Seek.h"
+#include "Scene_Flee.h"
+#include "Scene_Arrive.h"
 
 
 using namespace std;
@@ -40,6 +43,28 @@ int main(int argc, char ** argv)
 				curr_scene = new SceneKinematicFlee;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_3)
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Seek;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_4)
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Flee;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_5)
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Arrive;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
 			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
 			{
 				quit = true;
