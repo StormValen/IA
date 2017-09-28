@@ -8,6 +8,8 @@
 #include "Scene_Seek.h"
 #include "Scene_Flee.h"
 #include "Scene_Arrive.h"
+#include "Scene_Pursue.h"
+#include "Scene_Evade.h"
 
 
 using namespace std;
@@ -31,45 +33,63 @@ int main(int argc, char ** argv)
 		switch (event.type)
 		{
 		case SDL_KEYDOWN:
-			if (event.key.keysym.scancode == SDL_SCANCODE_1)
+			if (event.key.keysym.scancode == SDL_SCANCODE_1)  //SEEK sin cambios en la aceleracion.
 			{
 				delete(curr_scene);
 				curr_scene = new SceneKinematicSeek;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_2)
+			if (event.key.keysym.scancode == SDL_SCANCODE_2) //FLEE sin cambios en la aceleracion.
 			{
 				delete(curr_scene);
 				curr_scene = new SceneKinematicFlee;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 
-			if (event.key.keysym.scancode == SDL_SCANCODE_3)
+			if (event.key.keysym.scancode == SDL_SCANCODE_3) //SEEK con cambios en la aceleracion al cambiar de direccion.
 			{
 				delete(curr_scene);
 				curr_scene = new Scene_Seek;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 
-			if (event.key.keysym.scancode == SDL_SCANCODE_4)
+			if (event.key.keysym.scancode == SDL_SCANCODE_4) //FLEE con cambios en la aceleracion al cambiar de direccion.
 			{
 				delete(curr_scene);
 				curr_scene = new Scene_Flee;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 
-			if (event.key.keysym.scancode == SDL_SCANCODE_5)
+			if (event.key.keysym.scancode == SDL_SCANCODE_5) //ARRIVE 
 			{
 				delete(curr_scene);
 				curr_scene = new Scene_Arrive;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 
-			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))
+			if (event.key.keysym.scancode == SDL_SCANCODE_6) //PURSUE
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Pursue;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_7) //EVADE
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Evade;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			//WANDER
+			
+			//PATH FOLLOWING - or - FLOCKING
+
+			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)) //EXIT
 			{
 				quit = true;
 			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_F)
+			if (event.key.keysym.scancode == SDL_SCANCODE_F) //cambio del tipo de vista
 			{
 				app->setFullScreen();
 			}

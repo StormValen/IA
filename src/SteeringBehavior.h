@@ -21,6 +21,8 @@ public:
 	Vector2D Flee(Agent *agent, Agent *target, float dtime);
 	Vector2D Arrive(Agent *agent, Vector2D target, float dtime);
 	Vector2D Arrive(Agent *agent, Agent *target, float dtime);
+	Vector2D Pursue(Agent *agent, Agent *target, float dtime);
+	Vector2D Evade(Agent *agent, Agent *target, float dtime);
 	//etc...
 
 };

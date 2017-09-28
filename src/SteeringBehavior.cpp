@@ -96,3 +96,23 @@ Vector2D SteeringBehavior::Arrive(Agent *agent, Agent *target, float dtime)
 {
 	return Arrive(agent, target->position, dtime);
 }
+
+Vector2D SteeringBehavior::Pursue(Agent *agent, Agent *target, float dtime)
+{
+	if (target->getVelocity().Length() == 0) {
+		return Arrive(agent, target->getPosition(), dtime);
+	}
+	float T = Vector2D::Distance(agent->getPosition(), target->getPosition()) / target->getVelocity().Length();
+	Vector2D predictedTarget = target->getPosition() + target->getVelocity()*T;
+	return Arrive(agent, predictedTarget,dtime);
+}
+
+Vector2D SteeringBehavior::Evade(Agent *agent, Agent *target, float dtime)
+{
+	if (target->getVelocity().Length() == 0) {
+		return Flee(agent, target->getPosition(), dtime);
+	}
+	float T = Vector2D::Distance(agent->getPosition(), target->getPosition()) / target->getVelocity().Length();
+	Vector2D predictedTarget = target->getPosition() + target->getVelocity()*T;
+	return Flee(agent, predictedTarget, dtime);
+}
