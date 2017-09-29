@@ -12,7 +12,7 @@ Scene_Evade::Scene_Evade()
 	agents.push_back(agent);
 
 	Agent *agent2 = new Agent;
-	agent2->setPosition(Vector2D(320, 360));
+	agent2->setPosition(Vector2D(320, 180));
 	agent2->setTarget(agent->getPosition());
 	agent2->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent2);
@@ -60,6 +60,7 @@ void Scene_Evade::update(float dtime, SDL_Event *event)
 void Scene_Evade::draw()
 {
 	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
+	draw_circle(TheApp::Instance()->getRenderer(), (int)agents[1]->getTarget().x, (int)agents[1]->getTarget().y, 15, 255, 0, 0, 255);
 	agents[0]->draw();
 	agents[1]->draw();
 }

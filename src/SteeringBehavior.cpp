@@ -114,5 +114,11 @@ Vector2D SteeringBehavior::Evade(Agent *agent, Agent *target, float dtime)
 	}
 	float T = Vector2D::Distance(agent->getPosition(), target->getPosition()) / target->getVelocity().Length();
 	Vector2D predictedTarget = target->getPosition() + target->getVelocity()*T;
+	agent->setTarget(predictedTarget);
 	return Flee(agent, predictedTarget, dtime);
+}
+
+Vector2D SteeringBehavior::Wander(Agent *agent, Vector2D target, float dtime)
+{
+	return Arrive(agent, target, dtime);
 }
