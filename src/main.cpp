@@ -11,6 +11,7 @@
 #include "Scene_Pursue.h"
 #include "Scene_Evade.h"
 #include "Scene_Wander.h"
+#include "Scene_PathFollowing.h"
 
 
 using namespace std;
@@ -86,6 +87,12 @@ int main(int argc, char ** argv)
 			{
 				delete(curr_scene);
 				curr_scene = new Scene_Wander;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+			if (event.key.keysym.scancode == SDL_SCANCODE_9) //WANDER
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_PathFollowing;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 		
