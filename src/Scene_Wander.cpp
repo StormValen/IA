@@ -1,9 +1,10 @@
 #include "Scene_Wander.h"
 
 using namespace std;
-const float WanderMaxAngleChange = 50;
-const float WanderOffset = 100;
+const float WanderMaxAngleChange = 30;
+const float WanderOffset = 200;
 const float WanderRadius = 100;
+float angle = 0;
 float WanderAngle = 0;
 Vector2D TargetPosition;
 Vector2D CircleCenter;
@@ -48,15 +49,15 @@ void Scene_Wander::update(float dtime, SDL_Event *event)
 	default:
 		break;
 	}
-	if (counter > 1000) {
-	float angle = (float)(atan2(agents[0]->getVelocity().y, agents[0]->getVelocity().x) * RAD2DEG);
+	if (counter %1000 == 0) {
+	angle = (float)(atan2(agents[0]->getVelocity().y, agents[0]->getVelocity().x) * RAD2DEG);
 	WanderAngle += RandomBinomial() * WanderMaxAngleChange;
+	
+	}
 	float TargetAngle = angle + WanderAngle;
+	CircleCenter = agents[0]->getPosition() + agents[0]->getVelocity().Normalize() * WanderOffset;
 	TargetPosition.x = CircleCenter.x + WanderRadius * cos(TargetAngle);
 	TargetPosition.y = CircleCenter.y + WanderRadius * sin(TargetAngle);
-	}
-		
-	CircleCenter = agents[0]->getPosition() + agents[0]->getVelocity() + WanderOffset;
 
 
 		Vector2D steering_force = agents[0]->Behavior()->Wander(agents[0], TargetPosition, dtime);
@@ -65,7 +66,7 @@ void Scene_Wander::update(float dtime, SDL_Event *event)
 		agents[0]->setVelocity(agents[0]->getVelocity().Truncate(agents[0]->getMaxVelocity()));
 		agents[0]->setPosition(agents[0]->getPosition() + agents[0]->getVelocity() * dtime);
 		agents[0]->update(steering_force, dtime, event);
-		counter = 0;
+	
 
 	counter++;
 }
