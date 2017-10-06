@@ -3,23 +3,16 @@
 #include "Scene.h"
 #include "Agent.h"
 
-
-class Scene_PathFollowing :
+class Scene_PerimeterAvoidance :
 	public Scene
 {
 public:
-	Scene_PathFollowing();
-	~Scene_PathFollowing();
+	Scene_PerimeterAvoidance();
+	~Scene_PerimeterAvoidance();
 	void update(float dtime, SDL_Event *event);
 	void draw();
-	Vector2D generateRanomPoint();
-	int findNearestPoint();
 	const char* getTitle();
-	
 private:
-	int nearestPoint;
-	bool isFirstLoop;
 	std::vector<Agent*> agents;
 	Vector2D target;
-	Vector2D path[5];
 };

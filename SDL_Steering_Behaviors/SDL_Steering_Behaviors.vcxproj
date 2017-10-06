@@ -135,9 +135,11 @@
     <ClCompile Include="..\src\SceneKinematicFlee.cpp" />
     <ClCompile Include="..\src\SceneKinematicSeek .cpp" />
     <ClCompile Include="..\src\Scene_Arrive.cpp" />
+    <ClCompile Include="..\src\Scene_Combination.cpp" />
     <ClCompile Include="..\src\Scene_Evade.cpp" />
     <ClCompile Include="..\src\Scene_Flee.cpp" />
     <ClCompile Include="..\src\Scene_PathFollowing.cpp" />
+    <ClCompile Include="..\src\Scene_PerimeterAvoidance.cpp" />
     <ClCompile Include="..\src\Scene_Pursue.cpp" />
     <ClCompile Include="..\src\Scene_Seek.cpp" />
     <ClCompile Include="..\src\Scene_Wander.cpp" />
@@ -150,9 +152,11 @@
     <ClInclude Include="..\src\SceneKinematicFlee.h" />
     <ClInclude Include="..\src\SceneKinematicSeek.h" />
     <ClInclude Include="..\src\Scene_Arrive.h" />
+    <ClInclude Include="..\src\Scene_Combination.h" />
     <ClInclude Include="..\src\Scene_Evade.h" />
     <ClInclude Include="..\src\Scene_Flee.h" />
     <ClInclude Include="..\src\Scene_PathFollowing.h" />
+    <ClInclude Include="..\src\Scene_PerimeterAvoidance.h" />
     <ClInclude Include="..\src\Scene_Pursue.h" />
     <ClInclude Include="..\src\Scene_Seek.h" />
     <ClInclude Include="..\src\Scene_Wander.h" />

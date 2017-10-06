@@ -57,6 +57,12 @@
     <ClCompile Include="..\src\Scene_PathFollowing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Scene_PerimeterAvoidance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scene_Combination.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\SDL_SimpleApp.h">
@@ -102,6 +108,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Scene_PathFollowing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scene_PerimeterAvoidance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scene_Combination.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

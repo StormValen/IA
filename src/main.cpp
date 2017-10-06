@@ -12,6 +12,8 @@
 #include "Scene_Evade.h"
 #include "Scene_Wander.h"
 #include "Scene_PathFollowing.h"
+#include "Scene_PerimeterAvoidance.h"
+#include "Scene_Combination.h"
 
 
 using namespace std;
@@ -89,14 +91,26 @@ int main(int argc, char ** argv)
 				curr_scene = new Scene_Wander;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
-			if (event.key.keysym.scancode == SDL_SCANCODE_9) //WANDER
+			if (event.key.keysym.scancode == SDL_SCANCODE_9) //PATH FOLLOWING
 			{
 				delete(curr_scene);
 				curr_scene = new Scene_PathFollowing;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
-		
-			//PATH FOLLOWING - or - FLOCKING
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_0) //PERIMETER AVOIDANCE
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_PerimeterAvoidance;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+
+			if (event.key.keysym.scancode == SDL_SCANCODE_C) //COMBINATION
+			{
+				delete(curr_scene);
+				curr_scene = new Scene_Combination;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
 
 			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)) //EXIT
 			{

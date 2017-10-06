@@ -1,7 +1,6 @@
 #include "Scene_PathFollowing.h"
 #include <time.h>
 using namespace std;
-bool isFirstLoop = true;
 
 Scene_PathFollowing::Scene_PathFollowing()
 {
@@ -16,6 +15,7 @@ Scene_PathFollowing::Scene_PathFollowing()
 	}
 
 	nearestPoint = 0;
+	isFirstLoop = true;
 }
 
 Scene_PathFollowing::~Scene_PathFollowing()
@@ -23,7 +23,7 @@ Scene_PathFollowing::~Scene_PathFollowing()
 	for (int i = 0; i < (int)agents.size(); i++)
 	{
 		delete agents[i];
-	}
+	}	
 }
 Vector2D Scene_PathFollowing::generateRanomPoint() {
 	return Vector2D(rand() % 1280, rand() % 768);
